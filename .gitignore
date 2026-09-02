@@ -1,0 +1,13 @@
+node_modules
+.next
+.vercel
+.env*.local
+_*.mjs
+
+# Mídias do cliente (fotos de pacientes, vídeo de depoimento, logo).
+# Ficam FORA do repositório público: a autorização de uso cobre o site da
+# clínica, não a redistribuição num repositório aberto. Os arquivos seguem
+# no disco local e no deploy — só não são versionados aqui.
+public/images/
+public/video/
+Microsoft/

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-CimInstance Win32_StartupCommand)",
+      "PowerShell(Get-Process | Sort-Object WS -Descending | Select-Object -First 25 Name, @{n='MB';e={[math]::Round\\($_.WS/1MB,0\\)}}, Id | Format-Table -AutoSize | Out-String -Width 200)"
+    ]
+  }
+}
