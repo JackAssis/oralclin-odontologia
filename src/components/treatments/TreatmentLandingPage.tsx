@@ -35,7 +35,11 @@ export function TreatmentLandingPage({ treatment }: TreatmentLandingPageProps) {
         <GradientMesh variant="light" />
         <div className="max-w-5xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-[1.05fr_0.95fr] gap-12 md:gap-14 items-center">
-            <div className="space-y-8 md:space-y-9">
+            {/* min-w-0: sem isso, o letreiro (w-max, ~1500px) forçaria a coluna
+                do grid a crescer junto — coluna de grid tem min-width:auto e não
+                encolhe abaixo do conteúdo. Era o que estourava a largura do hero
+                no mobile. */}
+            <div className="space-y-8 md:space-y-9 min-w-0">
               {/* O termo de busca fica dentro do H1, acima da frase emocional:
                   preserva a palavra-chave para o orgânico sem abrir mão do impacto. */}
               <h1 className="space-y-5">
@@ -80,7 +84,7 @@ export function TreatmentLandingPage({ treatment }: TreatmentLandingPageProps) {
 
               {/* Mobile: letreiro de uma linha. Empilhados, cinco selos
                   ocupavam meia tela e empurravam a foto para fora da dobra. */}
-              <div className="md:hidden relative -mx-6 overflow-hidden pt-1">
+              <div className="md:hidden relative -mx-6 w-screen max-w-[100vw] overflow-hidden pt-1">
                 <div className="flex w-max animate-marquee">
                   {[0, 1].map((copy) => (
                     <ul

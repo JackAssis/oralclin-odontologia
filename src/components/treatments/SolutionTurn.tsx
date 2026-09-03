@@ -81,12 +81,15 @@ export function SolutionTurn({ solution }: Props) {
                 diagonal sobre a borda inferior da foto principal, para não
                 sumir da página como acontecia antes. */}
             {solution.insetPhoto && (
-              <div className="absolute -bottom-10 -right-2 w-28 h-36 lg:bottom-auto lg:-top-8 lg:-right-6 lg:w-40 lg:h-52 rounded-2xl overflow-hidden border-4 border-brand-mist shadow-xl rotate-3 lg:rotate-0">
+              /* z-20 é essencial: o painel de benefícios vem depois no DOM e,
+                 sem isso, pintava por cima da miniatura — ela ficava escondida
+                 atrás do painel no mobile. */
+              <div className="absolute z-20 -bottom-8 right-4 w-24 h-32 lg:bottom-auto lg:-top-8 lg:-right-6 lg:w-40 lg:h-52 rounded-2xl overflow-hidden border-4 border-brand-mist shadow-2xl rotate-3 lg:rotate-0">
                 <Image
                   src={solution.insetPhoto}
                   alt={solution.insetAlt ?? ""}
                   fill
-                  sizes="(max-width: 1024px) 112px, 160px"
+                  sizes="(max-width: 1024px) 96px, 160px"
                   className="object-cover"
                 />
               </div>
@@ -98,7 +101,7 @@ export function SolutionTurn({ solution }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative md:absolute md:left-8 md:right-8 md:-bottom-20 mt-14 md:mt-0 rounded-2xl bg-white/85 backdrop-blur-xl border border-white/60 shadow-[0_20px_50px_rgba(14,63,83,0.14)]"
+              className="relative z-10 md:absolute md:left-8 md:right-8 md:-bottom-20 mt-12 md:mt-0 rounded-2xl bg-white/85 backdrop-blur-xl border border-white/60 shadow-[0_20px_50px_rgba(14,63,83,0.14)]"
             >
               {/* Filetes finos em vez de caixas: os quatro ganhos convivem numa
                   faixa só, sem virar quatro cards iguais.
