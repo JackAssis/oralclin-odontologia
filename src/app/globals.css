@@ -40,6 +40,22 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
+/* Letreiro da faixa de confiança no mobile. Anda -50% porque a lista é
+   duplicada: ao chegar na metade, a cópia já está exatamente onde o original
+   começou, e o laço reinicia sem emenda. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 22s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -51,7 +67,8 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .animate-float {
+  .animate-float,
+  .animate-marquee {
     animation: none;
   }
 }
