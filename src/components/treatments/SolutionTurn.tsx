@@ -62,38 +62,40 @@ export function SolutionTurn({ solution }: Props) {
             transition={{ duration: 0.75 }}
             className="relative"
           >
-            {/* 3:2 = a proporção em que a foto do procedimento foi recortada,
-                para o container não cortá-la de novo */}
-            <div className="relative aspect-[4/3] md:aspect-[3/2] rounded-[1.75rem] overflow-hidden bg-brand-navy shadow-xl">
-              <Image
-                src={solution.photo}
-                alt={solution.photoAlt}
-                fill
-                sizes="(max-width: 768px) 92vw, 1100px"
-                className="object-cover"
-              />
-              {/* Véu leve: unifica a foto com a paleta sem escurecer demais */}
-              <span className="absolute inset-0 bg-gradient-to-tr from-brand-navy/45 via-transparent to-transparent" />
-            </div>
-
-            {/* Foto secundária: o lado do planejamento, não só o da execução.
-                No desktop fica solta no canto superior; no mobile desce em
-                diagonal sobre a borda inferior da foto principal, para não
-                sumir da página como acontecia antes. */}
-            {solution.insetPhoto && (
-              /* z-20 é essencial: o painel de benefícios vem depois no DOM e,
-                 sem isso, pintava por cima da miniatura — ela ficava escondida
-                 atrás do painel no mobile. */
-              <div className="absolute z-20 -bottom-8 right-4 w-24 h-32 lg:bottom-auto lg:-top-8 lg:-right-6 lg:w-40 lg:h-52 rounded-2xl overflow-hidden border-4 border-brand-mist shadow-2xl rotate-3 lg:rotate-0">
+            {/* Wrapper próprio da foto: a miniatura precisa se ancorar na borda
+                DA FOTO. Ancorada no container externo (foto + painel), o
+                "-bottom" caía no fim do painel e ela cobria o texto dos
+                benefícios. */}
+            <div className="relative">
+              {/* 3:2 = a proporção em que a foto do procedimento foi recortada,
+                  para o container não cortá-la de novo */}
+              <div className="relative aspect-[4/3] md:aspect-[3/2] rounded-[1.75rem] overflow-hidden bg-brand-navy shadow-xl">
                 <Image
-                  src={solution.insetPhoto}
-                  alt={solution.insetAlt ?? ""}
+                  src={solution.photo}
+                  alt={solution.photoAlt}
                   fill
-                  sizes="(max-width: 1024px) 96px, 160px"
+                  sizes="(max-width: 768px) 92vw, 1100px"
                   className="object-cover"
                 />
+                {/* Véu leve: unifica a foto com a paleta sem escurecer demais */}
+                <span className="absolute inset-0 bg-gradient-to-tr from-brand-navy/45 via-transparent to-transparent" />
               </div>
-            )}
+
+              {/* Foto secundária: o lado do planejamento, não só o da execução.
+                  No mobile ela cavalga o canto inferior direito da foto
+                  principal; no desktop sobe para o canto superior. */}
+              {solution.insetPhoto && (
+                <div className="absolute z-20 -bottom-10 right-5 w-24 h-32 lg:bottom-auto lg:-top-8 lg:-right-6 lg:w-40 lg:h-52 rounded-2xl overflow-hidden border-4 border-brand-mist shadow-2xl rotate-3 lg:rotate-0">
+                  <Image
+                    src={solution.insetPhoto}
+                    alt={solution.insetAlt ?? ""}
+                    fill
+                    sizes="(max-width: 1024px) 96px, 160px"
+                    className="object-cover"
+                  />
+                </div>
+              )}
+            </div>
 
             {/* Painel de benefícios, emergindo da foto */}
             <motion.div
@@ -101,7 +103,7 @@ export function SolutionTurn({ solution }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative z-10 md:absolute md:left-8 md:right-8 md:-bottom-20 mt-12 md:mt-0 rounded-2xl bg-white/85 backdrop-blur-xl border border-white/60 shadow-[0_20px_50px_rgba(14,63,83,0.14)]"
+              className="relative z-10 md:absolute md:left-8 md:right-8 md:-bottom-20 mt-16 md:mt-0 rounded-2xl bg-white/85 backdrop-blur-xl border border-white/60 shadow-[0_20px_50px_rgba(14,63,83,0.14)]"
             >
               {/* Filetes finos em vez de caixas: os quatro ganhos convivem numa
                   faixa só, sem virar quatro cards iguais.
