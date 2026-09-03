@@ -163,7 +163,13 @@ export const treatments: Treatment[] = [
       headlineAccent: "É a vontade de sorrir de novo.",
       lead: "Voltar a sorrir pode significar recuperar a autoestima, a segurança e a liberdade de viver momentos sem aquela preocupação.",
       formIntro: "Você começa com uma avaliação individual, entende seu caso e recebe orientação sobre o melhor caminho para transformar o seu sorriso.",
-      trustItems: ["Avaliação individual", "Planejamento personalizado", "Itapoá/SC"],
+      trustItems: [
+        "Avaliação individual",
+        "Planejamento personalizado",
+        "Exames de imagem",
+        "Acompanhamento em cada etapa",
+        "Itapoá/SC",
+      ],
       photo: "/images/clinica/paciente-marli.jpg",
       // Sem card de depoimento aqui: a frase da Marli é a headline da seção
       // logo abaixo, e repeti-la duas vezes seguidas enfraqueceria as duas.

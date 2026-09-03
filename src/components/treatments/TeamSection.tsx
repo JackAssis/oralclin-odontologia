@@ -144,28 +144,46 @@ export function TeamSection() {
           )}
         </motion.div>
 
-        {/* Pilares */}
-        <div className="mt-16 md:mt-20 pt-12 border-t border-brand-line">
-          <ul className="grid sm:grid-cols-3 gap-8 sm:gap-0 sm:divide-x sm:divide-brand-line">
+        {/* Pilares — como a equipe trabalha.
+            No mobile viram um painel único com filetes internos: soltos, os três
+            blocos pareciam desgarrados da seção. Como painel, leem como uma
+            continuação do cartão do profissional logo acima. */}
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.55 }}
+          className="mt-12 md:mt-20 md:pt-12 md:border-t md:border-brand-line"
+        >
+          <p className="md:hidden font-heading font-semibold text-[11px] tracking-[0.16em] uppercase text-brand-green text-center mb-4">
+            Como a equipe trabalha
+          </p>
+
+          <ul className="rounded-2xl border border-brand-line bg-brand-mist/60 divide-y divide-brand-line md:rounded-none md:border-0 md:bg-transparent md:divide-y-0 md:grid md:grid-cols-3 md:divide-x md:divide-brand-line">
             {pillars.map((pillar, index) => (
-              <motion.li
+              <li
                 key={pillar.title}
-                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="sm:px-8 sm:first:pl-0 sm:last:pr-0 text-center sm:text-left"
+                className="flex md:block items-start gap-4 p-5 md:p-0 md:px-8 md:first:pl-0 md:last:pr-0"
               >
-                <h3 className="font-heading font-semibold text-[11px] tracking-[0.16em] uppercase text-brand-navy">
-                  {pillar.title}
-                </h3>
-                <p className="mt-2.5 text-sm text-[#5a7a84] leading-relaxed">
-                  {pillar.description}
-                </p>
-              </motion.li>
+                {/* Marcador só no mobile: dá âncora visual a cada linha */}
+                <span
+                  aria-hidden="true"
+                  className="md:hidden flex-shrink-0 mt-1.5 w-6 h-0.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-green"
+                  style={{ opacity: 1 - index * 0.2 }}
+                />
+
+                <div className="min-w-0">
+                  <h3 className="font-heading font-semibold text-[11px] tracking-[0.16em] uppercase text-brand-navy">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-1.5 md:mt-2.5 text-sm text-[#5a7a84] leading-relaxed">
+                    {pillar.description}
+                  </p>
+                </div>
+              </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
 
         <p className="mt-10 text-xs text-[#8aa4ac] text-center leading-relaxed">
           {professionalsNote}

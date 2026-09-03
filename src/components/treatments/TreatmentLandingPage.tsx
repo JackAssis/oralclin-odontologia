@@ -66,9 +66,8 @@ export function TreatmentLandingPage({ treatment }: TreatmentLandingPageProps) {
                 </WhatsAppButton>
               </div>
 
-              {/* Selos numa linha fina com separadores — menos peso visual que
-                  uma lista de checks, que competiria com os botões */}
-              <ul className="flex flex-wrap items-center gap-x-3 gap-y-2 pt-1 text-[11px] tracking-[0.1em] uppercase text-[#7d959d] font-heading font-semibold">
+              {/* Desktop: linha fina distribuída */}
+              <ul className="hidden md:flex flex-wrap items-center gap-x-3 gap-y-2 pt-1 text-[11px] tracking-[0.1em] uppercase text-[#7d959d] font-heading font-semibold">
                 {treatment.hero.trustItems.map((item, index) => (
                   <li key={item} className="flex items-center gap-3">
                     {index > 0 && (
@@ -78,6 +77,39 @@ export function TreatmentLandingPage({ treatment }: TreatmentLandingPageProps) {
                   </li>
                 ))}
               </ul>
+
+              {/* Mobile: letreiro de uma linha. Empilhados, cinco selos
+                  ocupavam meia tela e empurravam a foto para fora da dobra. */}
+              <div className="md:hidden relative -mx-6 overflow-hidden pt-1">
+                <div className="flex w-max animate-marquee">
+                  {[0, 1].map((copy) => (
+                    <ul
+                      key={copy}
+                      aria-hidden={copy === 1}
+                      className="flex items-center gap-3 pr-3 text-[11px] tracking-[0.1em] uppercase text-[#7d959d] font-heading font-semibold"
+                    >
+                      {treatment.hero.trustItems.map((item) => (
+                        <li key={`${item}-${copy}`} className="flex items-center gap-3 whitespace-nowrap">
+                          <span
+                            aria-hidden="true"
+                            className="w-1 h-1 rounded-full bg-gradient-to-r from-brand-blue to-brand-green flex-shrink-0"
+                          />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ))}
+                </div>
+
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-brand-mist to-transparent"
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-brand-mist to-transparent"
+                />
+              </div>
             </div>
 
             {/* Foto + card de depoimento sobreposto */}
@@ -210,7 +242,14 @@ export function TreatmentLandingPage({ treatment }: TreatmentLandingPageProps) {
       </section>
 
       <Footer />
-      <StickyMobileCTA />
+      {/* O formulário desta página tem id="avaliacao", não "#contato" (que é o
+          da Home). Sem o href explícito, o botão fixo do mobile não levava a
+          lugar nenhum. */}
+      <StickyMobileCTA
+        href="#avaliacao"
+        whatsappMessage={treatment.whatsappMessage}
+        ctaLabel="Agendar minha avaliação hoje"
+      />
     </main>
   );
 }

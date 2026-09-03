@@ -76,14 +76,17 @@ export function SolutionTurn({ solution }: Props) {
               <span className="absolute inset-0 bg-gradient-to-tr from-brand-navy/45 via-transparent to-transparent" />
             </div>
 
-            {/* Foto secundária: o lado do planejamento, não só o da execução */}
+            {/* Foto secundária: o lado do planejamento, não só o da execução.
+                No desktop fica solta no canto superior; no mobile desce em
+                diagonal sobre a borda inferior da foto principal, para não
+                sumir da página como acontecia antes. */}
             {solution.insetPhoto && (
-              <div className="hidden lg:block absolute -top-8 -right-6 w-40 h-52 rounded-2xl overflow-hidden border-4 border-brand-mist shadow-xl">
+              <div className="absolute -bottom-10 -right-2 w-28 h-36 lg:bottom-auto lg:-top-8 lg:-right-6 lg:w-40 lg:h-52 rounded-2xl overflow-hidden border-4 border-brand-mist shadow-xl rotate-3 lg:rotate-0">
                 <Image
                   src={solution.insetPhoto}
                   alt={solution.insetAlt ?? ""}
                   fill
-                  sizes="160px"
+                  sizes="(max-width: 1024px) 112px, 160px"
                   className="object-cover"
                 />
               </div>
@@ -95,22 +98,24 @@ export function SolutionTurn({ solution }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative md:absolute md:left-8 md:right-8 md:-bottom-20 mt-6 md:mt-0 rounded-2xl bg-white/85 backdrop-blur-xl border border-white/60 shadow-[0_20px_50px_rgba(14,63,83,0.14)]"
+              className="relative md:absolute md:left-8 md:right-8 md:-bottom-20 mt-14 md:mt-0 rounded-2xl bg-white/85 backdrop-blur-xl border border-white/60 shadow-[0_20px_50px_rgba(14,63,83,0.14)]"
             >
               {/* Filetes finos em vez de caixas: os quatro ganhos convivem numa
-                  faixa só, sem virar quatro cards iguais */}
-              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y divide-brand-line lg:divide-y-0 lg:divide-x">
+                  faixa só, sem virar quatro cards iguais.
+                  No mobile ficam 2x2 — empilhados em coluna única viravam
+                  quatro blocos altos e a seção perdia o ritmo. */}
+              <ul className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-brand-line [&>li:nth-child(-n+2)]:border-b [&>li:nth-child(-n+2)]:border-brand-line lg:[&>li]:border-b-0">
                 {solution.benefits.map((benefit, index) => (
-                  <li key={benefit.title} className="p-6 lg:p-7">
+                  <li key={benefit.title} className="p-5 lg:p-7">
                     <span
                       aria-hidden="true"
-                      className="block w-8 h-0.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-green"
+                      className="block w-7 h-0.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-green"
                       style={{ opacity: 1 - index * 0.15 }}
                     />
-                    <h3 className="mt-4 font-heading font-semibold text-lg text-brand-navy leading-snug">
+                    <h3 className="mt-3.5 font-heading font-semibold text-base lg:text-lg text-brand-navy leading-snug">
                       {benefit.title}
                     </h3>
-                    <p className="mt-1.5 text-sm text-[#5a7a84] leading-relaxed">
+                    <p className="mt-1.5 text-[13px] lg:text-sm text-[#5a7a84] leading-relaxed">
                       {benefit.description}
                     </p>
                   </li>
