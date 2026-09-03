@@ -67,21 +67,21 @@ export const campaigns: Campaign[] = [
     metaTitle: "Alinhadores Invisíveis em Itapoá | Avaliação | OralClin",
   },
   {
-    slug: "invisalign",
-    treatmentSlug: "invisalign-itapoa",
-    adHeadline: "Invisalign em Itapoá: alinhamento discreto com acompanhamento profissional",
+    slug: "facetas",
+    treatmentSlug: "facetas-itapoa",
+    adHeadline: "Facetas em Itapoá: harmonia que parece natural",
     adSubheadline:
-      "Sistema de alinhadores transparentes removíveis, com planejamento digital e acompanhamento da equipe clínica.",
+      "Ajuste de forma, cor e proporção do sorriso, planejado a partir da avaliação clínica do seu caso.",
     bullets: [
-      "Alinhadores transparentes e removíveis",
-      "Planejamento digital das etapas do tratamento",
-      "Consultas de acompanhamento durante o processo",
+      "Planejamento estético antes de qualquer preparo",
+      "Resultado pensado para se integrar ao seu rosto",
+      "Avaliação para confirmar a indicação no seu caso",
     ],
     formTitle: "Agende sua avaliação",
     formSubtitle: "Preencha e a equipe entra em contato para entender o seu caso.",
     whatsappMessage:
-      "Olá! Vim pelo anúncio de Invisalign e gostaria de agendar uma avaliação.",
-    metaTitle: "Invisalign em Itapoá | Agende sua avaliação | OralClin",
+      "Olá! Vim pelo anúncio de facetas e gostaria de agendar uma avaliação.",
+    metaTitle: "Facetas Dentárias em Itapoá | Agende sua avaliação | OralClin",
   },
 ];
 

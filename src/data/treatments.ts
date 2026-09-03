@@ -3,6 +3,125 @@ export type Objection = {
   answer: string;
 };
 
+/** Hero emocional das páginas de tratamento — a abertura que segura o lead. */
+export type TreatmentHero = {
+  /** Primeira parte do título, em peso normal */
+  headline: string;
+  /** Fecho do título, destacado em gradiente — é onde está a virada emocional */
+  headlineAccent: string;
+  /** Um único parágrafo. Mais que isso e o hero perde o respiro. */
+  lead: string;
+  /** Frase que abre a seção do formulário, no fim da página */
+  formIntro: string;
+  /** Selos curtos abaixo dos botões */
+  trustItems: string[];
+  /** Foto principal do hero */
+  photo: string;
+  /** Card de depoimento sobreposto à foto, quando existe um autorizado */
+  testimonial?: {
+    quote: string;
+    name: string;
+    role: string;
+  };
+};
+
+/**
+ * Seção narrativa de identificação: nomeia as adaptações silenciosas que a
+ * pessoa já faz. Substitui os "pain points" em card quando presente.
+ */
+export type AdaptationNarrative = {
+  eyebrow: string;
+  headline: string;
+  headlineAccent: string;
+  lead: string;
+  /** Frase final do parágrafo, com mais peso */
+  leadEmphasis: string;
+  items: {
+    /**
+     * A frase em primeira pessoa, como um pensamento da própria pessoa.
+     * Lidas em sequência, as quatro formam um monólogo — é isso que gera
+     * identificação, onde uma lista numerada só enumeraria problemas.
+     */
+    quote: string;
+    description: string;
+    /** Opcional: enquanto não houver foto, o palco usa um tratamento tipográfico */
+    image?: string;
+  }[];
+  closing: {
+    headline: string;
+    headlineAccent: string;
+    support: string;
+  };
+};
+
+/**
+ * A virada: entra logo depois da seção de dor e precisa respirar.
+ * Foto real da clínica + os ganhos concretos do tratamento.
+ */
+export type TreatmentSolution = {
+  eyebrow: string;
+  headline: string;
+  headlineAccent: string;
+  lead: string;
+  /** Foto principal, em formato panorâmico */
+  photo: string;
+  photoAlt: string;
+  /** Foto secundária, sobreposta em canto — mostra o lado do planejamento */
+  insetPhoto?: string;
+  insetAlt?: string;
+  benefits: {
+    title: string;
+    description: string;
+  }[];
+};
+
+/**
+ * "Próximo passo": a jornada da decisão, não a do tratamento.
+ *
+ * Termina em "Decisão" de propósito — se terminasse em "Tratamento", a seção
+ * assumiria que a pessoa já vai fechar, contradizendo a promessa de que a
+ * avaliação não é uma consulta para vender.
+ */
+export type TreatmentJourney = {
+  eyebrow: string;
+  headline: string;
+  headlineAccent: string;
+  paragraphs: string[];
+  steps: {
+    /** Rótulo curto, usado no marcador da linha */
+    label: string;
+    title: string;
+    description: string;
+    /** Foto da etapa — troca junto com o marcador ativo, mostrando o que é
+     *  cada momento em vez de servir de enfeite */
+    image: string;
+    imageAlt: string;
+  }[];
+  /** O recado central da seção, isolado tipograficamente */
+  reassurance: {
+    line: string;
+    emphasis: string;
+  };
+  closing: string;
+};
+
+/**
+ * História real de um paciente, logo depois do hero.
+ *
+ * A headline é a frase do próprio paciente — tem mais força do que qualquer
+ * título que a gente escrevesse, e evita que a página faça promessa de
+ * resultado em nome da clínica.
+ */
+export type TreatmentStory = {
+  eyebrow: string;
+  quote: string;
+  paragraphs: string[];
+  patientName: string;
+  patientRole: string;
+  video: string;
+  poster: string;
+};
+
 export type Treatment = {
   slug: string;
   title: string;
@@ -12,6 +131,11 @@ export type Treatment = {
   heroEyebrow: string;
   heroH1: string;
   heroSubheadline: string;
+  hero: TreatmentHero;
+  story?: TreatmentStory;
+  adaptations?: AdaptationNarrative;
+  solution?: TreatmentSolution;
+  journey?: TreatmentJourney;
   ctaLabel: string;
   whatsappMessage: string;
   painPoints: string[];
@@ -34,6 +158,143 @@ export const treatments: Treatment[] = [
     heroEyebrow: "Odontologia em Itapoá",
     heroH1: "Prótese Protocolo em Itapoá",
     heroSubheadline: "Uma alternativa de reabilitação com prótese fixa sobre implantes, indicada após avaliação individual.",
+    hero: {
+      headline: "Talvez o que você queira recuperar não seja apenas o sorriso.",
+      headlineAccent: "É a vontade de sorrir de novo.",
+      lead: "Voltar a sorrir pode significar recuperar a autoestima, a segurança e a liberdade de viver momentos sem aquela preocupação.",
+      formIntro: "Você começa com uma avaliação individual, entende seu caso e recebe orientação sobre o melhor caminho para transformar o seu sorriso.",
+      trustItems: ["Avaliação individual", "Planejamento personalizado", "Itapoá/SC"],
+      photo: "/images/clinica/paciente-marli.jpg",
+      // Sem card de depoimento aqui: a frase da Marli é a headline da seção
+      // logo abaixo, e repeti-la duas vezes seguidas enfraqueceria as duas.
+    },
+    story: {
+      eyebrow: "Uma história real",
+      quote: "Depois de tanto tempo, a autoestima da gente volta com um sorriso.",
+      paragraphs: [
+        "O que você acabou de ler não é uma promessa nossa. É a frase da Marli, do jeito que ela falou.",
+        "Aqui ela conta, com as próprias palavras, o que o sorriso passou a representar depois do tratamento na OralClin.",
+      ],
+      patientName: "Marli",
+      patientRole: "Paciente OralClin",
+      video: "/video/depoimento-marli.mp4",
+      poster: "/video/depoimento-marli-poster.jpg",
+    },
+    adaptations: {
+      eyebrow: "Talvez você conheça essa sensação",
+      headline: "Quando o sorriso deixa de ser espontâneo, a gente começa a",
+      headlineAccent: "se adaptar.",
+      lead: "Escolher o que comer. Falar com mais cuidado. Evitar certas fotos. Sorrir menos. Pensar duas vezes antes de viver um momento simples.",
+      leadEmphasis: "E, com o tempo, aquilo que incomodava passa a parecer parte da rotina.",
+      items: [
+        {
+          quote: "Será que ela vai mexer?",
+          description:
+            "A preocupação não avisa a hora de chegar. Vem no meio da conversa, do almoço, da risada — e tira você do momento.",
+          image: "/images/narrativa/adapt-01-preocupacao.jpg",
+        },
+        {
+          quote: "Melhor eu pedir outra coisa.",
+          description:
+            "Você olha o cardápio e já sabe o que não vai pedir. Não é falta de vontade: é o cálculo silencioso de evitar o constrangimento.",
+          image: "/images/narrativa/adapt-02-prato.jpg",
+        },
+        {
+          quote: "Nessa foto eu não sorri.",
+          description:
+            "A boca fechada, o rosto virado, o sorriso contido. A insegurança aparece justo nos momentos que deveriam ser os mais leves.",
+          image: "/images/narrativa/adapt-03-foto.jpg",
+        },
+        {
+          quote: "Vou sorrir de boca fechada.",
+          description:
+            "Quando sorrir vira decisão em vez de reflexo, o que se perde não é só o sorriso. É a espontaneidade de ser você.",
+          image: "/images/narrativa/adapt-04-espelho.jpg",
+        },
+      ],
+      closing: {
+        headline: "Você não precisa continuar se adaptando a um sorriso que",
+        headlineAccent: "já não faz você se sentir bem.",
+        support:
+          "Existe um caminho que pode devolver segurança, estabilidade e liberdade para o seu dia a dia. Ele começa com uma conversa.",
+      },
+    },
+    solution: {
+      eyebrow: "A solução",
+      headline: "Existe uma alternativa que pode transformar",
+      headlineAccent: "o seu dia a dia.",
+      lead: "A prótese protocolo sobre implantes pode oferecer mais estabilidade, segurança e conforto para você viver momentos do cotidiano com mais tranquilidade.",
+      photo: "/images/clinica/procedimento-cirurgico.jpg",
+      photoAlt: "Equipe da OralClin durante um procedimento cirúrgico na clínica",
+      insetPhoto: "/images/clinica/protese-instrumental.jpg",
+      insetAlt: "Prótese protocolo e instrumental preparados na clínica",
+      benefits: [
+        {
+          title: "Mais segurança",
+          description: "Para falar, sorrir e mastigar.",
+        },
+        {
+          title: "Liberdade",
+          description: "Para comer o que gosta.",
+        },
+        {
+          title: "Mais autoestima",
+          description: "Para sorrir com confiança.",
+        },
+        {
+          title: "Mais estabilidade",
+          description: "Uma solução fixa planejada para o seu caso.",
+        },
+      ],
+    },
+    journey: {
+      eyebrow: "Próximo passo",
+      headline: "Como saber se esse caminho é",
+      headlineAccent: "para você?",
+      paragraphs: [
+        "Cada sorriso é único. Por isso, tudo começa com uma avaliação individual, onde entendemos suas necessidades, sua condição atual e o que você deseja transformar.",
+        "Depois, mostramos o caminho com clareza — sem pressão para decidir antes de entender.",
+      ],
+      steps: [
+        {
+          label: "Avaliação",
+          title: "Conhecemos o seu caso",
+          description:
+            "Uma conversa individual para entender sua situação atual, suas necessidades e o que você deseja transformar no seu sorriso.",
+          image: "/images/clinica/planejamento-avaliacao.jpg",
+          imageAlt: "Profissional da OralClin preenchendo a ficha de avaliação",
+        },
+        {
+          label: "Exames",
+          title: "Entendemos suas condições",
+          description:
+            "Os exames de imagem necessários mostram a estrutura óssea e a condição clínica — o que é possível e o que precisa de atenção antes.",
+          image: "/images/clinica/diagnostico-raiox.jpg",
+          imageAlt: "Radiografia panorâmica exibida em tablet na clínica",
+        },
+        {
+          label: "Planejamento",
+          title: "Definimos as possibilidades",
+          description:
+            "A partir da avaliação e dos exames, a equipe define os caminhos possíveis para o seu caso específico, com as etapas e o que esperar de cada uma.",
+          image: "/images/clinica/diagnostico-scan.jpg",
+          imageAlt: "Equipe da OralClin analisando o escaneamento do caso",
+        },
+        {
+          label: "Decisão",
+          title: "A escolha é sua",
+          description:
+            "Você recebe a orientação necessária para decidir com consciência — no seu tempo, sabendo exatamente o que está escolhendo.",
+          image: "/images/clinica/decisao-orientacao.jpg",
+          imageAlt: "Profissional da OralClin explicando o tratamento com um modelo de implante",
+        },
+      ],
+      reassurance: {
+        line: "Você não precisa chegar sabendo qual tratamento precisa.",
+        emphasis: "Precisa apenas dar o primeiro passo.",
+      },
+      closing: "Vamos descobrir juntos o melhor caminho para o seu sorriso.",
+    },
     ctaLabel: "Quero avaliar meu caso",
     whatsappMessage: "Olá! Gostaria de saber mais sobre prótese protocolo e entender como funciona a avaliação do meu caso.",
     painPoints: [
@@ -79,6 +340,14 @@ export const treatments: Treatment[] = [
     heroEyebrow: "Odontologia em Itapoá",
     heroH1: "Implante Dentário em Itapoá",
     heroSubheadline: "Recupere função e estética por meio de um tratamento planejado de acordo com as necessidades do seu caso.",
+    hero: {
+      headline: "Um dente que falta muda mais coisas",
+      headlineAccent: "do que a gente imagina.",
+      lead: "Mastigar de um lado só, evitar certos alimentos, cobrir a boca ao rir. São ajustes silenciosos que a gente vai fazendo, até virarem rotina.",
+      formIntro: "Você começa com uma avaliação individual, entende a condição do seu caso e recebe orientação sobre o que é possível fazer.",
+      trustItems: ["Avaliação com exames de imagem", "Planejamento individual", "Itapoá/SC"],
+      photo: "/images/tratamentos/trat-implantes.jpg",
+    },
     ctaLabel: "Agendar avaliação",
     whatsappMessage: "Olá! Gostaria de saber mais sobre implantes dentários e agendar uma avaliação.",
     painPoints: [
@@ -121,6 +390,14 @@ export const treatments: Treatment[] = [
     heroEyebrow: "Odontologia em Itapoá",
     heroH1: "Alinhe seu sorriso com mais discrição.",
     heroSubheadline: "Conheca as possibilidades dos alinhadores transparentes e descubra se esse tratamento pode ser indicado para você.",
+    hero: {
+      headline: "Alinhar o sorriso sem que a sua rotina",
+      headlineAccent: "precise mudar por causa disso.",
+      lead: "Reuniões, fotos, conversas de perto. A vontade de alinhar os dentes costuma esbarrar no receio de passar meses com algo aparente no sorriso.",
+      formIntro: "Você começa com uma avaliação individual que verifica se o seu caso tem indicação para alinhadores e o que esperar de cada etapa.",
+      trustItems: ["Avaliação individual", "Planejamento digital", "Itapoá/SC"],
+      photo: "/images/tratamentos/trat-alinhadores.jpg",
+    },
     ctaLabel: "Descobrir se e para mim",
     whatsappMessage: "Olá! Gostaria de saber se os alinhadores invisíveis podem ser indicados para o meu caso.",
     painPoints: [
@@ -149,50 +426,60 @@ export const treatments: Treatment[] = [
     technologyText: "O planejamento das etapas de movimentação e apoiado por recursos digitais utilizados pela equipe clínica.",
     objections: [
       { question: "Alinhador invisível funciona?", answer: "A indicação e a resposta ao tratamento dependem do caso individual, avaliado pela equipe clínica antes de qualquer decisão." },
-      { question: "Quanto custa Invisalign?", answer: "O valor depende do planejamento específico e será apresentado após a avaliação do seu caso." },
-      { question: "Invisalign vale a pena?", answer: "Isso depende dos seus objetivos e da indicação para o seu caso, temas que a avaliação ajuda a esclarecer." },
-      { question: "Invisalign ou aparelho convencional?", answer: "A escolha entre as opções depende da avaliação clínica individual e das necessidades específicas de cada paciente." },
+      { question: "Quanto custa o tratamento com alinhadores?", answer: "O valor depende do planejamento específico e será apresentado após a avaliação do seu caso." },
+      { question: "Alinhador vale a pena?", answer: "Isso depende dos seus objetivos e da indicação para o seu caso, temas que a avaliação ajuda a esclarecer." },
+      { question: "Alinhador ou aparelho convencional?", answer: "A escolha entre as opções depende da avaliação clínica individual e das necessidades específicas de cada paciente." },
     ],
   },
   {
-    slug: "invisalign-itapoa",
-    title: "Invisalign",
-    shortDescription: "Tecnologia e planejamento para transformar seu sorriso com discrição.",
-    seoTitle: "Invisalign em Itapoá | OralClin Odontologia",
-    seoDescription: "Saiba mais sobre o tratamento com Invisalign em Itapoá e agende uma avaliação com a equipe da OralClin.",
+    slug: "facetas-itapoa",
+    title: "Facetas",
+    shortDescription: "Corrija imperfeições e realce o que você tem de melhor, com resultado natural.",
+    seoTitle: "Facetas Dentárias em Itapoá | OralClin Odontologia",
+    seoDescription: "Entenda como funcionam as facetas dentárias, para quem podem ser indicadas e agende uma avaliação na OralClin, em Itapoá.",
     heroEyebrow: "Odontologia em Itapoá",
-    heroH1: "Invisalign em Itapoá",
-    heroSubheadline: "Uma alternativa discreta para o alinhamento dos dentes, com planejamento e acompanhamento profissional.",
-    ctaLabel: "Agendar avaliação",
-    whatsappMessage: "Olá! Gostaria de saber mais sobre Invisalign e agendar uma avaliação.",
+    heroH1: "Facetas Dentárias em Itapoá",
+    heroSubheadline: "Uma alternativa estética para forma, cor e alinhamento aparente dos dentes, sempre definida a partir de avaliação individual.",
+    hero: {
+      headline: "Um sorriso que continua sendo o seu —",
+      headlineAccent: "só que do jeito que você gostaria.",
+      lead: "Não é sobre ter outro sorriso. É sobre ajustar aquele detalhe que te incomoda há tempo na foto, no espelho, na hora de rir sem pensar.",
+      formIntro: "O planejamento vem antes de qualquer preparo: você entende o que é possível no seu caso e decide com clareza.",
+      trustItems: ["Planejamento antes de decidir", "Resultado natural", "Itapoá/SC"],
+      photo: "/images/tratamentos/trat-facetas.jpg",
+    },
+    ctaLabel: "Quero avaliar meu caso",
+    whatsappMessage: "Olá! Gostaria de saber mais sobre facetas e entender se são indicadas para o meu caso.",
     painPoints: [
-      "Busca por uma marca reconhecida de alinhadores transparentes.",
-      "Dúvida sobre a diferença entre Invisalign e outros alinhadores.",
-      "Vontade de planejar o tratamento com acompanhamento profissional próximo.",
+      "Incômodo com a cor, o formato ou o tamanho dos dentes da frente.",
+      "Pequenos desgastes, manchas ou espaços que aparecem ao sorrir.",
+      "Vontade de harmonizar o sorriso mantendo uma aparência natural.",
     ],
-    whatIsIt: "Invisalign(R) e um sistema de alinhadores transparentes removíveis, utilizado conforme planejamento e acompanhamento do dentista responsável pelo caso.",
+    whatIsIt: "Facetas são lâminas finas fixadas na face visível dos dentes, usadas para ajustar forma, cor e proporção do sorriso. Existem diferentes materiais e técnicas, e a escolha depende da avaliação clínica de cada caso — inclusive da condição do dente que vai recebê-las.",
     whoItsFor: [
-      "Pacientes que buscam alinhar os dentes de forma discreta.",
-      "Quem já pesquisou sobre alinhadores e quer entender melhor o sistema Invisalign.",
-      "Pessoas que desejam avaliar se o próprio caso é indicado para esse sistema.",
+      "Pessoas incomodadas com cor, formato ou proporção dos dentes anteriores.",
+      "Quem tem pequenas fraturas, desgastes ou espaços entre os dentes.",
+      "Pacientes que querem entender se o próprio caso tem indicação estética.",
     ],
     benefits: [
-      "Alinhadores transparentes e removíveis.",
-      "Planejamento das etapas de movimentação conduzido pela equipe clínica.",
-      "Acompanhamento profissional ao longo do tratamento.",
+      "Ajuste de forma, cor e proporção dentro do que o caso permite.",
+      "Planejamento prévio para você visualizar a proposta antes de decidir.",
+      "Resultado pensado para se integrar de forma natural ao seu rosto.",
     ],
     howItWorks: [
-      "Avaliação clínica para confirmar a indicação do sistema Invisalign.",
-      "Planejamento digital das etapas de movimentação dentária.",
-      "Uso continuo dos alinhadores conforme orientação.",
-      "Consultas de acompanhamento durante o tratamento.",
+      "Avaliação clínica da saúde bucal e da condição dos dentes envolvidos.",
+      "Planejamento estético do formato, da cor e da proporção do sorriso.",
+      "Preparo dos dentes conforme a técnica indicada para o caso.",
+      "Instalação das facetas e ajustes finais de acompanhamento.",
     ],
-    planningText: "O uso da marca Invisalign(R) neste site segue o relacionamento e credenciamento vigente da clínica, e cada plano de tratamento e definido após avaliação individual.",
-    technologyText: "O planejamento digital das etapas de movimentação e um recurso utilizado pela equipe para apoiar o acompanhamento do tratamento.",
+    planningText: "Facetas são um tratamento estético e exigem que a saúde bucal esteja em ordem antes de começar. O planejamento considera a condição de cada dente, a expectativa do paciente e o que é possível alcançar no caso específico.",
+    technologyText: "O planejamento estético é apoiado por recursos de imagem que ajudam a alinhar, antes do início, a expectativa do paciente e a proposta da equipe clínica.",
     objections: [
-      { question: "Invisalign ou aparelho fixo?", answer: "A indicação entre as opções depende da avaliação clínica individual e das necessidades específicas do seu caso." },
-      { question: "Quanto custa Invisalign?", answer: "O valor é apresentado após a avaliação, conforme o planejamento definido para o seu caso." },
-      { question: "Quanto tempo dura o tratamento?", answer: "O tempo de tratamento varia conforme o planejamento individual definido na avaliação." },
+      { question: "Faceta estraga o dente?", answer: "O preparo varia conforme a técnica e a condição de cada dente. Essa é justamente uma das questões discutidas na avaliação, antes de qualquer decisão." },
+      { question: "O resultado fica artificial?", answer: "Forma, cor e proporção são definidas no planejamento, considerando o seu rosto e a sua expectativa. O objetivo é um resultado que se integre naturalmente." },
+      { question: "Quanto tempo dura?", answer: "A durabilidade depende do material, dos hábitos e da manutenção. A equipe explica os cuidados necessários durante a avaliação." },
+      { question: "Quanto custa?", answer: "O valor depende do número de dentes e da técnica indicada, e é apresentado após a avaliação do seu caso." },
+      { question: "Meu caso tem indicação?", answer: "Só é possível confirmar após avaliação clínica, que verifica a saúde bucal e a condição dos dentes que receberiam as facetas." },
     ],
   },
 ];

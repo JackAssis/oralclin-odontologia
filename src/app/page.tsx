@@ -36,11 +36,15 @@ export default function Home() {
                 </div>
 
                 <h1 className="text-4xl md:text-6xl font-heading font-semibold text-brand-navy leading-tight">
-                  Seu sorriso merece um cuidado <em className="text-brand-blue font-semibold not-italic">a altura dele.</em>
+                  Seu sorriso merece um cuidado{" "}
+                  <em className="bg-gradient-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-semibold not-italic">
+                    à altura dele.
+                  </em>
                 </h1>
 
                 <p className="text-base md:text-lg text-[#426572] leading-relaxed max-w-lg">
-                  Tecnologia, conhecimento e atendimento humanizado para cuidar do seu sorriso e transformar sua qualidade de vida.
+                  Em Itapoá, tecnologia e conhecimento para cuidar do seu sorriso. Humanidade para
+                  cuidar de você.
                 </p>
               </div>
 
@@ -66,13 +70,13 @@ export default function Home() {
             <div className="relative min-h-[450px] md:min-h-[510px]">
               <div className="absolute inset-0 md:inset-y-0 md:right-0 md:left-auto md:w-[60%] rounded-3xl md:rounded-l-[200px] md:rounded-r-2xl overflow-hidden bg-[#dcece7]">
                 <Image
-                  src={photos.draTaliane}
-                  alt="Dra. Taliane, responsável pela OralClin, em Itapoá"
+                  src={photos.draTalianeProcedimento}
+                  alt="Dra. Taliane realizando um procedimento na OralClin, em Itapoá"
                   fill
                   priority
                   sizes="(max-width: 900px) 90vw, 43vw"
                   className="object-cover"
-                  style={{ objectPosition: "50% 25%" }}
+                  style={{ objectPosition: "50% 40%" }}
                 />
               </div>
 

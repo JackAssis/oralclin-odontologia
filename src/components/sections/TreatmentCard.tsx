@@ -1,10 +1,35 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import type { Treatment } from "@/data/treatments";
-import { treatmentPhotos, photos } from "@/data/media";
+import { treatmentCardImages } from "@/data/media";
+
+/** Copy emocional de cada card — headline curta + apoio, por tratamento. */
+const cardCopy: Record<string, { headline: string; support: string }> = {
+  "protese-protocolo-itapoa": {
+    headline: "Volte a sorrir, falar e mastigar sem insegurança.",
+    support:
+      "Mais estabilidade, conforto e liberdade para viver cada momento com confiança.",
+  },
+  "implante-dentario-itapoa": {
+    headline: "Recupere o que faz falta ao seu sorriso.",
+    support:
+      "Soluções personalizadas que devolvem função, estética e segurança de forma duradoura.",
+  },
+  "alinhadores-invisiveis-itapoa": {
+    headline: "Alinhe seu sorriso sem mudar sua rotina.",
+    support:
+      "Discretos, confortáveis e eficientes para transformar seu sorriso com leveza e praticidade.",
+  },
+  "facetas-itapoa": {
+    headline: "Harmonia que parece natural, beleza que transforma.",
+    support:
+      "Corrija imperfeições e realce o que você tem de melhor com um resultado natural e sofisticado.",
+  },
+};
 
 type TreatmentCardProps = {
   treatment: Treatment;
@@ -12,52 +37,59 @@ type TreatmentCardProps = {
 };
 
 export function TreatmentCard({ treatment, index }: TreatmentCardProps) {
+  const copy = cardCopy[treatment.slug];
+  const image = treatmentCardImages[treatment.slug];
+
   return (
     <motion.article
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group border-b border-brand-line py-6 px-4 -mx-4 rounded-2xl flex items-start gap-6 md:gap-8 hover:bg-white/60 hover:backdrop-blur-xl hover:border-white/40 hover:shadow-lg transition-all duration-300 cursor-pointer"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.55, delay: (index % 2) * 0.1 }}
+      className="group"
     >
-      <Link href={`/${treatment.slug}`} className="flex items-start gap-6 md:gap-8 w-full">
-        {/* Número grande em Fraunces */}
-        <motion.div
-          className="flex-shrink-0 font-heading text-5xl md:text-6xl font-bold text-brand-blue/20 group-hover:text-brand-blue/40 transition-colors w-12 md:w-16"
-          whileHover={{ scale: 1.1 }}
-        >
-          {String(index + 1).padStart(2, "0")}
-        </motion.div>
+      <Link
+        href={`/${treatment.slug}`}
+        className="block h-full rounded-3xl overflow-hidden bg-white border border-brand-line hover:border-brand-blue/40 hover:shadow-[0_18px_40px_rgba(14,63,83,0.10)] transition-all duration-300"
+      >
+        {/* Imagem */}
+        <div className="relative aspect-[4/3] overflow-hidden bg-brand-mist">
+          <Image
+            src={image}
+            alt={`${treatment.title} na OralClin`}
+            fill
+            sizes="(max-width: 768px) 92vw, 44vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          />
 
-        {/* Conteúdo textual */}
-        <div className="flex-1 pt-2">
-          <motion.h3
-            className="font-heading text-xl md:text-2xl font-semibold text-brand-navy mb-2 group-hover:text-brand-blue transition-colors"
-            whileHover={{ x: 4 }}
-          >
-            {treatment.title}
-          </motion.h3>
-          <p className="text-sm md:text-base text-[#52717a] leading-relaxed">
-            {treatment.shortDescription}
-          </p>
+          {/* Véu de gradiente: dá contraste ao rótulo e amarra a foto à identidade */}
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/75 via-brand-navy/10 to-transparent" />
+
+          <div className="absolute left-5 right-5 bottom-4 flex items-center gap-2.5">
+            <span className="font-heading font-bold text-xs text-white/70 tabular-nums">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span className="h-px flex-1 bg-white/25" />
+            <span className="font-heading font-semibold text-[11px] tracking-[0.16em] uppercase text-white">
+              {treatment.title}
+            </span>
+          </div>
         </div>
 
-        {/* Thumbnail que aparece no hover */}
-        <div className="hidden lg:flex-shrink-0 lg:w-32 lg:h-32 rounded-lg overflow-hidden bg-brand-mist border border-brand-line flex-shrink-0">
-          <motion.div
-            className="relative w-full h-full"
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileHover={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Image
-              src={treatmentPhotos[treatment.slug] ?? photos.estrutura}
-              alt={treatment.title}
-              fill
-              sizes="128px"
-              className="object-cover"
-            />
-          </motion.div>
+        {/* Texto */}
+        <div className="p-6 md:p-7 flex flex-col gap-3">
+          <h3 className="font-heading font-semibold text-lg md:text-xl text-brand-navy leading-snug">
+            {copy?.headline ?? treatment.title}
+          </h3>
+
+          <p className="text-sm text-[#5a7a84] leading-relaxed">
+            {copy?.support ?? treatment.shortDescription}
+          </p>
+
+          <span className="mt-1 inline-flex items-center gap-1.5 font-heading font-semibold text-sm text-brand-blue group-hover:gap-2.5 transition-all">
+            Conhecer tratamento
+            <ArrowRight size={16} strokeWidth={2.4} />
+          </span>
         </div>
       </Link>
     </motion.article>

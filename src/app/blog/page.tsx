@@ -32,7 +32,7 @@ export default function BlogIndex() {
                   Em breve
                 </span>
                 <h2 className="text-lg md:text-xl font-heading font-semibold text-brand-navy">{topic.title}</h2>
-                <p className="mt-3 text-sm text-[#52717a]">Conteúdo em preparacao para vocÃª.</p>
+                <p className="mt-3 text-sm text-[#52717a]">Conteúdo em preparação para você.</p>
               </article>
             ))}
           </div>

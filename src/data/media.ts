@@ -1,7 +1,9 @@
 /** Fotos da clínica, agrupadas por uso — evita repetir caminho solto pelos componentes. */
 
 export const photos = {
-  /** Dra. Taliane, responsável pela OralClin — foto de capa da Home */
+  /** Dra. Taliane em procedimento — foto de capa da Home */
+  draTalianeProcedimento: "/images/clinica/taliane-procedimento.jpg",
+  /** Retrato da Dra. Taliane, responsável pela OralClin */
   draTaliane: "/images/clinica/dra-taliane.jpg",
   /** Retrato de outra profissional da equipe */
   retrato: "/images/clinica/equipe-retrato.jpg",
@@ -45,10 +47,18 @@ export const facadePhotos = {
   recepcao: "/images/clinica/recepcao-interna.jpg",
 };
 
+/** Imagem ilustrativa de cada tratamento na grade da Home */
+export const treatmentCardImages: Record<string, string> = {
+  "protese-protocolo-itapoa": "/images/tratamentos/trat-protese-protocolo.jpg",
+  "implante-dentario-itapoa": "/images/tratamentos/trat-implantes.jpg",
+  "alinhadores-invisiveis-itapoa": "/images/tratamentos/trat-alinhadores.jpg",
+  "facetas-itapoa": "/images/tratamentos/trat-facetas.jpg",
+};
+
 /** Imagem de apoio para cada tratamento, usada nas páginas e LPs */
 export const treatmentPhotos: Record<string, string> = {
   "protese-protocolo-itapoa": photos.cirurgiaImplante,
   "implante-dentario-itapoa": photos.implanteModelo,
   "alinhadores-invisiveis-itapoa": photos.planejamentoDigital,
-  "invisalign-itapoa": photos.diagnosticoScan,
+  "facetas-itapoa": photos.diagnosticoScan,
 };
