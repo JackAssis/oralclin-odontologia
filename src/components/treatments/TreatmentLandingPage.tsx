@@ -12,6 +12,7 @@ import Image from "next/image";
 import { GradientMesh } from "@/components/decor/GradientMesh";
 import { GlassCard } from "@/components/decor/GlassCard";
 import { LeadForm } from "@/components/forms/LeadForm";
+import { QuickCapture } from "./QuickCapture";
 import { PatientStory } from "./PatientStory";
 import { TeamSection } from "./TeamSection";
 import { AdaptationNarrative } from "./AdaptationNarrative";
@@ -154,6 +155,12 @@ export function TreatmentLandingPage({ treatment }: TreatmentLandingPageProps) {
         </div>
       </section>
 
+      {/* Página de venda: o formulário vem logo depois do hero. Quem já chegou
+          decidido converte aqui, sem atravessar a narrativa inteira. Quem ainda
+          precisa ser convencido rola e encontra tudo abaixo — e o formulário
+          completo de novo no fim. */}
+      <QuickCapture treatment={treatment} />
+
       {/* História real do paciente — a prova social vem antes da dor,
           então quem chega já sabe que existe saída. */}
       {treatment.story && (
@@ -239,7 +246,12 @@ export function TreatmentLandingPage({ treatment }: TreatmentLandingPageProps) {
 
             <GlassCard variant="dark" className="p-6 md:p-8">
               <h3 className="text-lg font-heading font-semibold text-white mb-4">Envie suas informações</h3>
-              <LeadForm />
+              {/* source distinto do formulário do topo: é assim que dá para
+                  medir qual das duas posições converte mais */}
+              <LeadForm
+                defaultTreatment={treatment.slug}
+                source={`pagina-${treatment.slug}-final`}
+              />
             </GlassCard>
           </div>
         </div>
