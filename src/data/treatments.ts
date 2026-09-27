@@ -371,21 +371,25 @@ export const treatments: Treatment[] = [
           quote: "Mastigo sempre do mesmo lado.",
           description:
             "Começa como preferência e vira automático. Um lado trabalha dobrado, o outro descansa — e o corpo se acostuma com o desequilíbrio.",
+          image: "/images/narrativa/impl-01-mastigar.jpg",
         },
         {
           quote: "Rio com a mão na frente.",
           description:
             "O gesto é tão rápido que nem parece escolha. Mas ele aparece justo nos momentos em que a risada deveria ser solta.",
+          image: "/images/narrativa/impl-02-riso.jpg",
         },
         {
           quote: "Ano que vem eu resolvo.",
           description:
             "O adiamento tem sempre um motivo razoável. E, enquanto isso, a falta vai deixando de incomodar por acostumar, não por melhorar.",
+          image: "/images/narrativa/impl-03-adiamento.jpg",
         },
         {
           quote: "Será que afeta os outros dentes?",
           description:
             "Essa é a dúvida que costuma vir junto. E é exatamente ela que uma avaliação com exames de imagem consegue responder.",
+          image: "/images/narrativa/impl-04-duvida.jpg",
         },
       ],
       closing: {
