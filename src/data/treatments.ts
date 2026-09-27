@@ -515,17 +515,134 @@ export const treatments: Treatment[] = [
     seoTitle: "Alinhadores Invisíveis em Itapoá | OralClin Odontologia",
     seoDescription: "Descubra se os alinhadores invisíveis podem ser indicados para o seu caso e agende uma avaliação na OralClin, em Itapoá.",
     heroEyebrow: "Odontologia em Itapoá",
-    heroH1: "Alinhe seu sorriso com mais discrição.",
-    heroSubheadline: "Conheca as possibilidades dos alinhadores transparentes e descubra se esse tratamento pode ser indicado para você.",
+    heroH1: "Alinhadores Invisíveis em Itapoá",
+    heroSubheadline: "Conheça as possibilidades dos alinhadores transparentes e descubra se esse tratamento pode ser indicado para você.",
     hero: {
       headline: "Alinhar o sorriso sem que a sua rotina",
       headlineAccent: "precise mudar por causa disso.",
       lead: "Reuniões, fotos, conversas de perto. A vontade de alinhar os dentes costuma esbarrar no receio de passar meses com algo aparente no sorriso.",
       formIntro: "Você começa com uma avaliação individual que verifica se o seu caso tem indicação para alinhadores e o que esperar de cada etapa.",
-      trustItems: ["Avaliação individual", "Planejamento digital", "Itapoá/SC"],
+      trustItems: [
+        "Avaliação individual",
+        "Escaneamento digital",
+        "Etapas planejadas antes de começar",
+        "Acompanhamento em cada troca",
+        "Itapoá/SC",
+      ],
       photo: "/images/tratamentos/trat-alinhadores.jpg",
     },
-    ctaLabel: "Descobrir se e para mim",
+    adaptations: {
+      eyebrow: "Talvez você faça isso sem perceber",
+      headline: "A gente aprende a esconder",
+      headlineAccent: "sem nem decidir esconder.",
+      lead: "Escolher o ângulo da foto. Segurar o sorriso. Adiar mais um pouco. São ajustes pequenos, feitos quase no automático.",
+      leadEmphasis: "E hábito, depois de um tempo, deixa de parecer escolha.",
+      items: [
+        {
+          quote: "Sempre o mesmo ângulo na foto.",
+          description:
+            "Você já sabe qual lado favorece, e vira para ele sem pensar. Não é vaidade: é um ensaio silencioso que você repete há anos.",
+        },
+        {
+          quote: "Aparelho? Agora?",
+          description:
+            "A vontade existe, mas esbarra na ideia de passar meses com algo aparente — em reunião, em foto, em conversa de perto.",
+        },
+        {
+          quote: "Depois desse projeto eu resolvo.",
+          description:
+            "Sempre tem um compromisso no caminho. E o tratamento vai ficando para um momento mais calmo que nunca chega.",
+        },
+        {
+          quote: "Melhor não abrir muito o sorriso.",
+          description:
+            "O sorriso sai contido sem você mandar. É o corpo protegendo algo que a cabeça já decidiu esconder.",
+        },
+      ],
+      closing: {
+        headline: "Alinhar o sorriso não precisa custar",
+        headlineAccent: "meses de constrangimento.",
+        support:
+          "Existe um caminho discreto, com as etapas planejadas antes de começar. Ele começa com uma avaliação que confirma se o seu caso tem indicação.",
+      },
+    },
+    solution: {
+      eyebrow: "A solução",
+      headline: "Alinhar sem que ninguém precise",
+      headlineAccent: "reparar no processo.",
+      lead: "Os alinhadores são placas transparentes e removíveis, trocadas em etapas definidas digitalmente antes de o tratamento começar.",
+      photo: "/images/clinica/planejamento-alinhador-wide.jpg",
+      photoAlt: "Profissional da OralClin planejando o tratamento com alinhadores no computador",
+      insetPhoto: "/images/clinica/alinhador-produto.jpg",
+      insetAlt: "Alinhador transparente removível",
+      benefits: [
+        {
+          title: "Discrição",
+          description: "Transparentes no dia a dia.",
+        },
+        {
+          title: "Liberdade",
+          description: "Removíveis para comer e higienizar.",
+        },
+        {
+          title: "Planejamento digital",
+          description: "As etapas definidas antes de começar.",
+        },
+        {
+          title: "Acompanhamento",
+          description: "Consultas de controle ao longo do caminho.",
+        },
+      ],
+    },
+    journey: {
+      eyebrow: "Próximo passo",
+      headline: "Como saber se o alinhador é",
+      headlineAccent: "indicado para você?",
+      paragraphs: [
+        "Nem todo caso tem indicação para alinhadores. Tudo começa com uma avaliação individual, que verifica o tipo de movimentação que os seus dentes precisam.",
+        "Depois, mostramos o caminho com clareza — sem pressão para decidir antes de entender.",
+      ],
+      steps: [
+        {
+          label: "Avaliação",
+          title: "Conhecemos o seu caso",
+          description:
+            "Uma conversa individual para entender o que te incomoda no sorriso hoje e o que você gostaria de mudar.",
+          image: "/images/clinica/planejamento-avaliacao.jpg",
+          imageAlt: "Profissional da OralClin registrando a avaliação do paciente",
+        },
+        {
+          label: "Escaneamento",
+          title: "Mapeamos seus dentes",
+          description:
+            "O escaneamento digital substitui a moldagem e gera o modelo em que o tratamento será planejado — sem pasta, sem desconforto.",
+          image: "/images/clinica/diagnostico-scan.jpg",
+          imageAlt: "Equipe da OralClin analisando o escaneamento intraoral",
+        },
+        {
+          label: "Planejamento",
+          title: "Você vê o caminho antes de começar",
+          description:
+            "As etapas de movimentação são definidas digitalmente, então dá para entender quantas trocas serão necessárias antes de iniciar.",
+          image: "/images/clinica/diagnostico-raiox.jpg",
+          imageAlt: "Exame de imagem usado no planejamento do tratamento",
+        },
+        {
+          label: "Decisão",
+          title: "A escolha é sua",
+          description:
+            "Você recebe a orientação necessária para decidir com consciência — no seu tempo, sabendo exatamente o que está escolhendo.",
+          image: "/images/clinica/decisao-orientacao.jpg",
+          imageAlt: "Profissional da OralClin explicando o tratamento ao paciente",
+        },
+      ],
+      reassurance: {
+        line: "Você não precisa chegar sabendo se o seu caso tem indicação.",
+        emphasis: "Precisa apenas dar o primeiro passo.",
+      },
+      closing: "Vamos descobrir juntos o melhor caminho para o seu sorriso.",
+    },
+    ctaLabel: "Descobrir se é para mim",
     whatsappMessage: "Olá! Gostaria de saber se os alinhadores invisíveis podem ser indicados para o meu caso.",
     painPoints: [
       "Vontade de alinhar os dentes sem usar aparelho metalico visivel.",
