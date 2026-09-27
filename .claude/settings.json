@@ -2,7 +2,24 @@
   "permissions": {
     "allow": [
       "PowerShell(Get-CimInstance Win32_StartupCommand)",
-      "PowerShell(Get-Process | Sort-Object WS -Descending | Select-Object -First 25 Name, @{n='MB';e={[math]::Round\\($_.WS/1MB,0\\)}}, Id | Format-Table -AutoSize | Out-String -Width 200)"
+      "PowerShell(Get-Process | Sort-Object WS -Descending | Select-Object -First 25 Name, @{n='MB';e={[math]::Round\\($_.WS/1MB,0\\)}}, Id | Format-Table -AutoSize | Out-String -Width 200)",
+      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(48\\).toString\\('base64'\\)\\)\")",
+      "Bash(npx --yes shadcn@latest init -d)",
+      "Bash(./pgsql/bin/pg_ctl.exe -D pgdata status)",
+      "Bash(npx vitest *)",
+      "Bash(node -e ' *)",
+      "Bash(rm -f /tmp/a11.txt)",
+      "Bash(rm -f /tmp/a13.txt)",
+      "Bash(python -c ' *)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\jacks\\Downloads\\sonia-ofertas\\apps\\api",
+      "C:\\Users\\jacks\\Downloads\\sonia-ofertas\\packages\\config\\src",
+      "C:\\Users\\jacks\\Downloads\\sonia-ofertas\\apps\\api\\src",
+      "C:\\Users\\jacks\\Downloads\\sonia-ofertas",
+      "C:\\Users\\jacks\\Downloads\\sonia-ofertas\\apps\\api\\tests",
+      "C:\\Users\\jacks\\OneDrive\\Área de Trabalho\\ROTEIRO CANAL DE CARRO\\Setembro 2026",
+      "C:\\Users\\jacks\\Downloads\\sabiduria-felipe-site"
     ]
   }
 }

@@ -351,8 +351,125 @@ export const treatments: Treatment[] = [
       headlineAccent: "do que a gente imagina.",
       lead: "Mastigar de um lado só, evitar certos alimentos, cobrir a boca ao rir. São ajustes silenciosos que a gente vai fazendo, até virarem rotina.",
       formIntro: "Você começa com uma avaliação individual, entende a condição do seu caso e recebe orientação sobre o que é possível fazer.",
-      trustItems: ["Avaliação com exames de imagem", "Planejamento individual", "Itapoá/SC"],
-      photo: "/images/tratamentos/trat-implantes.jpg",
+      trustItems: [
+        "Avaliação individual",
+        "Exames de imagem",
+        "Planejamento dente a dente",
+        "Acompanhamento em cada etapa",
+        "Itapoá/SC",
+      ],
+      photo: "/images/clinica/implante-modelo.jpg",
+    },
+    adaptations: {
+      eyebrow: "Talvez você reconheça isso",
+      headline: "A gente vai se ajustando, até virar",
+      headlineAccent: "o jeito normal de viver.",
+      lead: "Mastigar sempre do mesmo lado. Rir com a mão na frente. Adiar mais um ano. São ajustes pequenos, feitos quase sem pensar.",
+      leadEmphasis: "Até que um dia eles deixam de parecer ajuste e passam a parecer quem você é.",
+      items: [
+        {
+          quote: "Mastigo sempre do mesmo lado.",
+          description:
+            "Começa como preferência e vira automático. Um lado trabalha dobrado, o outro descansa — e o corpo se acostuma com o desequilíbrio.",
+        },
+        {
+          quote: "Rio com a mão na frente.",
+          description:
+            "O gesto é tão rápido que nem parece escolha. Mas ele aparece justo nos momentos em que a risada deveria ser solta.",
+        },
+        {
+          quote: "Ano que vem eu resolvo.",
+          description:
+            "O adiamento tem sempre um motivo razoável. E, enquanto isso, a falta vai deixando de incomodar por acostumar, não por melhorar.",
+        },
+        {
+          quote: "Será que afeta os outros dentes?",
+          description:
+            "Essa é a dúvida que costuma vir junto. E é exatamente ela que uma avaliação com exames de imagem consegue responder.",
+        },
+      ],
+      closing: {
+        headline: "Você não precisa continuar se ajustando a uma falta que",
+        headlineAccent: "tem solução.",
+        support:
+          "Existe um caminho para repor o que falta, planejado a partir do seu caso e dos seus exames. Ele começa com uma conversa.",
+      },
+    },
+    solution: {
+      eyebrow: "A solução",
+      headline: "Repor o que falta pode devolver mais do que",
+      headlineAccent: "um dente.",
+      lead: "O implante dentário repõe a raiz e o dente, devolvendo função e estética de forma planejada a partir da condição óssea e clínica do seu caso.",
+      photo: "/images/clinica/atendimento-implante-wide.jpg",
+      photoAlt: "Equipe da OralClin durante um atendimento na clínica",
+      insetPhoto: "/images/clinica/implante-modelo.jpg",
+      insetAlt: "Modelo didático mostrando como o implante se posiciona no osso",
+      benefits: [
+        {
+          title: "Mastigação equilibrada",
+          description: "Voltar a usar os dois lados.",
+        },
+        {
+          title: "Estética natural",
+          description: "Um dente que conversa com os seus.",
+        },
+        {
+          title: "Planejamento individual",
+          description: "Posição definida a partir dos seus exames.",
+        },
+        {
+          title: "Acompanhamento",
+          description: "A equipe junto em cada etapa.",
+        },
+      ],
+    },
+    journey: {
+      eyebrow: "Próximo passo",
+      headline: "Como saber se o implante é",
+      headlineAccent: "indicado para você?",
+      paragraphs: [
+        "Cada caso é diferente. Tudo começa com uma avaliação individual, que verifica a condição dos dentes vizinhos, da gengiva e do osso da região.",
+        "Depois, mostramos o caminho com clareza — sem pressão para decidir antes de entender.",
+      ],
+      steps: [
+        {
+          label: "Avaliação",
+          title: "Conhecemos o seu caso",
+          description:
+            "Uma conversa individual para entender há quanto tempo falta o dente, como isso afeta a sua rotina e o que você espera do tratamento.",
+          image: "/images/clinica/planejamento-avaliacao.jpg",
+          imageAlt: "Profissional da OralClin registrando a avaliação do paciente",
+        },
+        {
+          label: "Exames",
+          title: "Verificamos a condição óssea",
+          description:
+            "Os exames de imagem mostram quanto osso existe na região e se ele comporta o implante — é o que define se o caso está pronto ou precisa de uma etapa antes.",
+          image: "/images/clinica/diagnostico-raiox.jpg",
+          imageAlt: "Radiografia panorâmica usada para avaliar a região do implante",
+        },
+        {
+          label: "Planejamento",
+          title: "Definimos posição e quantidade",
+          description:
+            "A partir dos exames, a equipe define onde cada implante entra e quantos são necessários, com as etapas e o tempo de cada uma.",
+          image: "/images/clinica/diagnostico-scan.jpg",
+          imageAlt: "Equipe da OralClin analisando o escaneamento do caso",
+        },
+        {
+          label: "Decisão",
+          title: "A escolha é sua",
+          description:
+            "Você recebe a orientação necessária para decidir com consciência — no seu tempo, sabendo exatamente o que está escolhendo.",
+          image: "/images/clinica/decisao-orientacao.jpg",
+          imageAlt: "Profissional da OralClin explicando o tratamento com um modelo de implante",
+        },
+      ],
+      reassurance: {
+        line: "Você não precisa chegar sabendo quantos implantes precisa.",
+        emphasis: "Precisa apenas dar o primeiro passo.",
+      },
+      closing: "Vamos descobrir juntos o melhor caminho para o seu sorriso.",
     },
     ctaLabel: "Agendar avaliação",
     whatsappMessage: "Olá! Gostaria de saber mais sobre implantes dentários e agendar uma avaliação.",
