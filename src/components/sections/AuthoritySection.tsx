@@ -1,9 +1,7 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { professionalsNote, responsibleProfessional } from "@/data/professionals";
+import { professionals, professionalsNote } from "@/data/professionals";
 import { GlassCard } from "@/components/decor/GlassCard";
 import { GradientMesh } from "@/components/decor/GradientMesh";
-import { teamPhotos } from "@/data/media";
 
 export function AuthoritySection() {
   return (
@@ -25,50 +23,34 @@ export function AuthoritySection() {
           </p>
         </div>
 
+        {/* Nome sempre acompanhado do CRO — exigência do CFO para publicidade odontológica */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-          {/* Card da responsável técnica: nome sempre acompanhado do CRO (regra do CFO) */}
-          <GlassCard
-            variant="light"
-            className="overflow-hidden hover:-translate-y-1 transition-transform duration-300"
-          >
-            <div className="relative bg-[#dfece9] h-48 md:h-64">
-              <Image
-                src={responsibleProfessional.photo!}
-                alt={`${responsibleProfessional.name}, ${responsibleProfessional.role} da OralClin`}
-                fill
-                sizes="(max-width: 760px) 46vw, 23vw"
-                className="object-cover"
-                style={{ objectPosition: "50% 20%" }}
-              />
-            </div>
-            <div className="p-3 md:p-4">
-              <p className="font-heading font-semibold text-xs md:text-sm text-brand-navy">
-                {responsibleProfessional.name}
-              </p>
-              <p className="text-[11px] text-[#52717a] mt-0.5">{responsibleProfessional.cro}</p>
-              <p className="text-[11px] text-brand-green font-heading font-semibold mt-1">
-                {responsibleProfessional.role}
-              </p>
-            </div>
-          </GlassCard>
-
-          {teamPhotos.slice(1).map((photo) => (
-            <GlassCard key={photo} variant="light" className="overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+          {professionals.map((professional) => (
+            <GlassCard
+              key={professional.cro}
+              variant="light"
+              className="overflow-hidden hover:-translate-y-1 transition-transform duration-300"
+            >
               <div className="relative bg-[#dfece9] h-48 md:h-64">
-                <Image
-                  src={photo}
-                  alt="Profissional da equipe OralClin"
-                  fill
-                  sizes="(max-width: 760px) 46vw, 23vw"
-                  className="object-cover"
-                  style={{ objectPosition: "50% 20%" }}
-                />
+                {professional.photo && (
+                  <Image
+                    src={professional.photo}
+                    alt={`${professional.name}, ${professional.role} da OralClin`}
+                    fill
+                    sizes="(max-width: 760px) 46vw, 23vw"
+                    className="object-cover"
+                    style={{ objectPosition: "50% 18%" }}
+                  />
+                )}
               </div>
-              <div className="p-3 md:p-4 flex items-center justify-between">
-                <p className="font-heading font-semibold text-xs md:text-sm text-brand-navy">Equipe OralClin</p>
-                <a href="#contato" className="flex items-center gap-1 text-brand-blue font-heading font-semibold text-xs hover:gap-1.5 transition-all">
-                  Conhecer <ArrowRight size={15} />
-                </a>
+              <div className="p-3 md:p-4">
+                <p className="font-heading font-semibold text-xs md:text-sm text-brand-navy leading-snug">
+                  {professional.name}
+                </p>
+                <p className="text-[11px] text-[#52717a] mt-0.5">{professional.cro}</p>
+                <p className="text-[11px] text-brand-green font-heading font-semibold mt-1">
+                  {professional.specialty ?? professional.role}
+                </p>
               </div>
             </GlassCard>
           ))}
