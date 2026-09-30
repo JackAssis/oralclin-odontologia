@@ -43,8 +43,8 @@ export const facadePhotos = {
   frente: "/images/clinica/fachada-frente.jpg",
   /** Detalhe do logotipo na fachada, contra o céu */
   logo: "/images/clinica/fachada-logo.jpg",
-  /** Sala de atendimento/recepção interna */
-  recepcao: "/images/clinica/recepcao-interna.jpg",
+  /** Scanner intraoral em uso — tecnologia da clínica */
+  scanner: "/images/clinica/scanner-procedimento.jpg",
 };
 
 /** Imagem ilustrativa de cada tratamento na grade da Home */

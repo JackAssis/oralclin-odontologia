@@ -126,11 +126,12 @@ export default function Home() {
 
               <div className="relative h-40 md:h-52 rounded-2xl overflow-hidden bg-[#264f5e] shadow-lg">
                 <Image
-                  src={facadePhotos.recepcao}
-                  alt="Sala de atendimento da OralClin"
+                  src={facadePhotos.scanner}
+                  alt="Scanner intraoral em uso na OralClin"
                   fill
                   sizes="(max-width: 760px) 45vw, 22vw"
                   className="object-cover"
+                  style={{ objectPosition: "50% 60%" }}
                 />
               </div>
             </div>
