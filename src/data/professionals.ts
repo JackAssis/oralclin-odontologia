@@ -5,7 +5,7 @@ export type Professional = {
   role: string;
   /**
    * Especialidade registrada. Fica vazia até a clínica confirmar: divulgar
-   * especialidade não registrada é infração, então nada aqui é presumido.
+   * especialidade não registrada é infração, então o campo vazio não renderiza.
    */
   specialty?: string;
   photo?: string;
@@ -19,13 +19,32 @@ export const responsibleProfessional: Professional = {
   photo: "/images/clinica/dra-taliane.jpg",
 };
 
-/**
- * Demais profissionais entram aqui conforme nome + CRO forem confirmados.
- * Com dois ou mais, a seção de equipe passa a exibir a frase de conjunto
- * automaticamente.
- */
-export const professionals: Professional[] = [responsibleProfessional];
+export const professionals: Professional[] = [
+  responsibleProfessional,
 
-/** Aviso exibido enquanto os dados dos demais profissionais não chegarem. */
+  {
+    name: "Dr. Eduardo Olsen Lazzaris",
+    cro: "CRO-SC 11884",
+    role: "Cirurgião-Dentista",
+    specialty: "Implantodontia",
+    photo: "/images/clinica/dr-eduardo.jpg",
+  },
+
+  {
+    name: "Dra. Jéssica Conti Réus",
+    cro: "CRO-SC 16211",
+    role: "Cirurgiã-Dentista",
+    photo: "/images/clinica/dra-jessica.jpg",
+  },
+
+  {
+    name: "Simone de Castro",
+    // SC-ASB-7193 — Auxiliar em Saúde Bucal, ativo no CFO
+    cro: "ASB-SC 7193",
+    role: "Auxiliar em Saúde Bucal",
+    photo: "/images/clinica/simone.jpg",
+  },
+];
+
 export const professionalsNote =
-  "Nomes, CROs e especialidades dos demais profissionais serão inseridos após o envio das informações oficiais.";
+  "Registros verificados junto ao Conselho Federal de Odontologia.";

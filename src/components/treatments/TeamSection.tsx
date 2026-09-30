@@ -104,9 +104,17 @@ export function TeamSection() {
               </div>
             </div>
           ) : (
-            /* Dois ou mais: grade de cartões */
+            /* Dois ou mais: grade de cartões.
+               Com 4 profissionais usa 4 colunas no desktop para não deixar
+               um cartão órfão na última linha do grid de 3. */
             <>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div
+                className={`grid sm:grid-cols-2 gap-5 mx-auto ${
+                  professionals.length >= 4
+                    ? "lg:grid-cols-4 max-w-5xl"
+                    : "lg:grid-cols-3 max-w-4xl"
+                }`}
+              >
                 {professionals.map((professional) => (
                   <article
                     key={professional.cro}
@@ -118,19 +126,21 @@ export function TeamSection() {
                           src={professional.photo}
                           alt={`${professional.name}, ${professional.role} da OralClin`}
                           fill
-                          sizes="(max-width: 640px) 92vw, 320px"
+                          sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 240px"
                           className="object-cover"
-                          style={{ objectPosition: "50% 22%" }}
+                          style={{ objectPosition: "50% 18%" }}
                         />
                       </div>
                     )}
-                    <div className="p-5">
-                      <h3 className="font-heading font-semibold text-base text-brand-navy leading-snug">
+                    <div className="p-4">
+                      <h3 className="font-heading font-semibold text-sm text-brand-navy leading-snug">
                         {professional.name}
                       </h3>
-                      <p className="mt-1 text-sm text-[#5a7a84]">{professional.cro}</p>
+                      <p className="mt-1 text-xs text-[#5a7a84]">{professional.cro}</p>
                       {professional.specialty && (
-                        <p className="mt-1.5 text-sm text-[#5a7a84]">{professional.specialty}</p>
+                        <p className="mt-1 text-xs text-brand-green font-heading font-semibold tracking-wide uppercase">
+                          {professional.specialty}
+                        </p>
                       )}
                     </div>
                   </article>
