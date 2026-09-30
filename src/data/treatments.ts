@@ -531,6 +531,18 @@ export const treatments: Treatment[] = [
       ],
       photo: "/images/tratamentos/trat-alinhadores.jpg",
     },
+    story: {
+      eyebrow: "Uma história real",
+      quote: "Trabalhando e aparecendo nas câmeras normalmente.",
+      paragraphs: [
+        "O que você acabou de ler são as palavras da Nathaly. Ela mesma gravou a própria jornada — da fachada da clínica ao consultório, da avaliação até a troca dos alinhadores.",
+        "O scanner digital tornou o planejamento preciso e confortável. Os alinhadores, transparentes e discretos, seguiram com ela na rotina de trabalho sem que ninguém precisasse notar.",
+      ],
+      patientName: "Nathaly Monteiro",
+      patientRole: "Criadora de conteúdo",
+      video: "/video/depoimento-nathaly.mp4",
+      poster: "/video/depoimento-nathaly-poster.jpg",
+    },
     adaptations: {
       eyebrow: "Talvez você faça isso sem perceber",
       headline: "A gente aprende a esconder",
@@ -540,21 +552,25 @@ export const treatments: Treatment[] = [
       items: [
         {
           quote: "Sempre o mesmo ângulo na foto.",
+          image: "/images/narrativa/alinhador-angulo.jpg",
           description:
             "Você já sabe qual lado favorece, e vira para ele sem pensar. Não é vaidade: é um ensaio silencioso que você repete há anos.",
         },
         {
           quote: "Aparelho? Agora?",
+          image: "/images/narrativa/alinhador-agora.jpg",
           description:
             "A vontade existe, mas esbarra na ideia de passar meses com algo aparente — em reunião, em foto, em conversa de perto.",
         },
         {
           quote: "Depois desse projeto eu resolvo.",
+          image: "/images/narrativa/alinhador-depois.jpg",
           description:
             "Sempre tem um compromisso no caminho. E o tratamento vai ficando para um momento mais calmo que nunca chega.",
         },
         {
           quote: "Melhor não abrir muito o sorriso.",
+          image: "/images/narrativa/alinhador-sorriso.jpg",
           description:
             "O sorriso sai contido sem você mandar. É o corpo protegendo algo que a cabeça já decidiu esconder.",
         },
