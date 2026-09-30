@@ -23,6 +23,7 @@
     "@types/react-dom": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "sharp": "^0.35.5",
     "tailwindcss": "latest",
     "typescript": "latest"
   }

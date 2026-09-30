@@ -22,7 +22,7 @@ export type Lead = {
  * um erro explicito no log do servidor em vez de falhar em silencio, porque numa
  * campanha paga um lead perdido e dinheiro perdido.
  */
-async function deliverLead(lead: Lead) {
+export async function deliverLead(lead: Lead) {
   const webhookUrl = process.env.LEAD_WEBHOOK_URL;
 
   if (!webhookUrl) {
