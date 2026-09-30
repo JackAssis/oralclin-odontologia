@@ -82,21 +82,36 @@ export function LeadForm({ variant = "dark", defaultTreatment, source = "site" }
         <label htmlFor="treatment" className={labelClass}>
           Tratamento de interesse
         </label>
-        <select
-          id="treatment"
-          name="treatment"
-          required
-          defaultValue={defaultTreatment ?? ""}
-          className={`${fieldClass} [&>option]:text-brand-navy`}
-        >
-          <option value="">Selecione um tratamento</option>
-          {treatments.map((treatment) => (
-            <option key={treatment.slug} value={treatment.slug}>
-              {treatment.title}
-            </option>
-          ))}
-          <option value="outro">Outro</option>
-        </select>
+        {defaultTreatment ? (
+          /* Página de tratamento: o campo é travado — só exibe o tratamento
+             daquela página. O visitante não precisa escolher, e o valor
+             chega certinho no lead. */
+          <>
+            <input type="hidden" name="treatment" value={defaultTreatment} />
+            <div
+              className={`${fieldClass} flex items-center opacity-80 cursor-default select-none`}
+            >
+              {treatments.find((t) => t.slug === defaultTreatment)?.title ?? defaultTreatment}
+            </div>
+          </>
+        ) : (
+          /* Home e páginas genéricas: dropdown completo */
+          <select
+            id="treatment"
+            name="treatment"
+            required
+            defaultValue=""
+            className={`${fieldClass} [&>option]:text-brand-navy`}
+          >
+            <option value="">Selecione um tratamento</option>
+            {treatments.map((treatment) => (
+              <option key={treatment.slug} value={treatment.slug}>
+                {treatment.title}
+              </option>
+            ))}
+            <option value="outro">Outro</option>
+          </select>
+        )}
       </div>
 
       {state?.error && (
