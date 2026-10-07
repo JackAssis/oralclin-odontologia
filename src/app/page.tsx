@@ -22,11 +22,11 @@ export default function Home() {
       <Header />
 
       {/* Hero */}
-      <section className="mt-20 pt-16 md:pt-24 pb-16 md:pb-20 bg-gradient-to-br from-brand-mist from-[61%] via-brand-mist to-[#e7f8f2] overflow-hidden relative">
+      <section className="mt-20 pt-0 md:pt-24 pb-16 md:pb-20 bg-gradient-to-br from-brand-mist from-[61%] via-brand-mist to-[#e7f8f2] overflow-hidden relative">
         <GradientMesh variant="light" />
         <div className="max-w-5xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 items-center">
+            <div className="space-y-8 order-2 md:order-1 pt-8 md:pt-0">
               <div className="space-y-6">
                 <div className="flex items-center gap-2">
                   <span className="inline-block w-5 h-0.5 bg-brand-green" />
@@ -67,8 +67,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative min-h-[450px] md:min-h-[510px]">
-              <div className="absolute inset-0 md:inset-y-0 md:right-0 md:left-auto md:w-[60%] rounded-3xl md:rounded-l-[200px] md:rounded-r-2xl overflow-hidden bg-[#dcece7]">
+            <div className="relative min-h-[240px] md:min-h-[510px] order-1 md:order-2">
+              <div className="absolute inset-0 md:inset-y-0 md:right-0 md:left-auto md:w-[60%] rounded-b-3xl md:rounded-b-none md:rounded-l-[200px] md:rounded-r-2xl overflow-hidden bg-[#dcece7]">
                 <Image
                   src={photos.draTalianeProcedimento}
                   alt="Dra. Taliane realizando um procedimento na OralClin, em Itapoá"
@@ -80,7 +80,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="absolute bottom-6 left-0 md:left-auto md:right-auto md:bottom-6 md:-left-10 w-40 h-40 rounded-full bg-brand-navy/70 backdrop-blur-xl border border-white/20 text-white p-6 shadow-[0_16px_30px_rgba(14,63,83,0.25)] flex flex-col justify-center items-center">
+              <div className="hidden md:flex absolute bottom-6 md:bottom-6 md:-left-10 w-40 h-40 rounded-full bg-brand-navy/70 backdrop-blur-xl border border-white/20 text-white p-6 shadow-[0_16px_30px_rgba(14,63,83,0.25)] flex-col justify-center items-center">
                 <span className="bg-gradient-to-r from-brand-blue to-brand-green bg-clip-text text-transparent text-xs font-heading font-semibold block mb-2">OralClin</span>
                 <strong className="text-center text-base font-heading font-semibold leading-tight mb-2">
                   Cuidado que transforma
