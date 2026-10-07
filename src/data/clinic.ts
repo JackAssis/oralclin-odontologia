@@ -8,7 +8,7 @@ export const clinic = {
   address: "R. 787 Vanilda Pereira Gomes, 617 - Itapema do Norte, Itapoá - SC, 89249-000",
   postalCode: "89249-000",
   neighborhood: "Itapema do Norte",
-  hours: "[INSERIR HORÁRIO DE FUNCIONAMENTO]",
+  hours: "Seg. a Sex.: 8h às 17h30 | Sáb.: mediante agendamento | Dom.: fechado",
   instagramUrl: "https://www.instagram.com/oralclinitapoa/",
   mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJfZzlMDpX2ZQRQ6Qhvsrlu2U",
   googlePlaceId: "ChIJfZzlMDpX2ZQRQ6Qhvsrlu2U",
