@@ -10,8 +10,8 @@ export const clinic = {
   neighborhood: "Itapema do Norte",
   hours: "[INSERIR HORÁRIO DE FUNCIONAMENTO]",
   instagramUrl: "https://www.instagram.com/oralclinitapoa/",
-  mapsUrl: "[INSERIR LINK DO GOOGLE MAPS]",
-  googlePlaceId: "[INSERIR GOOGLE PLACE ID]",
+  mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJfZzlMDpX2ZQRQ6Qhvsrlu2U",
+  googlePlaceId: "ChIJfZzlMDpX2ZQRQ6Qhvsrlu2U",
   ga4MeasurementId: "",
   siteUrl: "[INSERIR URL DO SITE]",
   /** Google Ads — usados para disparar a conversao nas LPs de campanha */
