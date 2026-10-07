@@ -26,7 +26,7 @@ export const professionals: Professional[] = [
     name: "Dr. Eduardo Olsen Lazzaris",
     cro: "CRO-SC 11884",
     role: "Cirurgião-Dentista",
-    specialty: "Implantodontia",
+    specialty: "Ortodontia",
     photo: "/images/clinica/dr-eduardo.jpg",
   },
 
@@ -34,14 +34,15 @@ export const professionals: Professional[] = [
     name: "Dra. Jéssica Conti Réus",
     cro: "CRO-SC 16211",
     role: "Cirurgiã-Dentista",
+    specialty: "Implantodontia",
     photo: "/images/clinica/dra-jessica.jpg",
   },
 
   {
     name: "Simone de Castro",
-    // SC-ASB-7193 — Auxiliar em Saúde Bucal, ativo no CFO
+    // SC-ASB-7193 — Auxiliar em Saúde Bucal, ativo no CFO; função na clínica: Gerente
     cro: "ASB-SC 7193",
-    role: "Auxiliar em Saúde Bucal",
+    role: "Gerente",
     photo: "/images/clinica/simone.jpg",
   },
 ];
